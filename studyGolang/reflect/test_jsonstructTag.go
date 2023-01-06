@@ -16,7 +16,7 @@ func main() {
 	movie := Movie{"Avatar", 2008, 50, []string{"zhang3", "li4"}}
 
 	// struct -----> json
-	jsonStr,err := json.Marshal(movie)
+	jsonStr, err := json.Marshal(movie)
 
 	if err != nil {
 		fmt.Println("json marshal error")
