@@ -9,8 +9,9 @@ func fibonachi(c, quit chan int) {
 		select {
 		case c <- x:
 			// 如果可以把x写到c中 执行
+			t := x
 			x = y
-			y = x + y
+			y = t + y
 		case <-quit:
 			// 如果quit可读
 			fmt.Println("sub gorountine exit...")
