@@ -5,6 +5,7 @@ import (
 	"io"
 	"net"
 	"sync"
+	"time"
 )
 
 type MyServer struct {
@@ -66,7 +67,10 @@ func (this *MyServer)Handler(conn net.Conn) {
 	// 用户上线
 	user.Online()
 
-	// 接收客户端发送的消息并广播，核心是启动一个针对客户端conn的读gorountine
+	// 判断用户是否活跃
+	isActive := make(chan bool)
+
+	// 接收客户端发送的消息，核心是启动一个针对客户端conn的读gorountine
 	go func() {
 		buf := make([]byte,4096) // 4K大小，超过会有问题
 		for {
@@ -86,8 +90,31 @@ func (this *MyServer)Handler(conn net.Conn) {
 
 			// 用户针对msg进行处理
 			user.DoMessage(msg)
+
+			isActive <-true //只要有发消息就说明该用户活跃
 		}
 	}()
+
+	// 定时器监控当前用户是否活跃
+	for {
+		select {
+		case <-isActive:
+			// 当前用户活跃，应该重置定时器
+			// 不做任何事情，激活select重置time即可
+		
+		case <-time.After(time.Second * 60):
+			// 如果超过60s没发消息就要把用户踢出去
+			user.SendMessage("由于你长时间没发消息,系统已将你强制踢出!\n")
+
+			// 销毁使用的资源
+			close(user.C)
+
+			// 关闭连接
+			conn.Close()
+
+			return
+		}
+	}
 }
 
 // 广播消息的方法
