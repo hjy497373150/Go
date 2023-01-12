@@ -102,8 +102,8 @@ func (this *MyServer)Handler(conn net.Conn) {
 			// 当前用户活跃，应该重置定时器
 			// 不做任何事情，激活select重置time即可
 		
-		case <-time.After(time.Second * 60):
-			// 如果超过60s没发消息就要把用户踢出去
+		case <-time.After(time.Second * 300):
+			// 如果超过300s没发消息就要把用户踢出去
 			user.SendMessage("由于你长时间没发消息,系统已将你强制踢出!\n")
 
 			// 销毁使用的资源
