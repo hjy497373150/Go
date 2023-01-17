@@ -6,3 +6,6 @@
 
 ## BasicKnowledge
 Go语言的基本语法知识
+
+## GMP
+Go语言的GMP调度机制
