@@ -1,3 +1,5 @@
+// 简单工厂模式
+
 package main
 
 import "fmt"
