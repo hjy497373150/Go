@@ -1,3 +1,4 @@
+// 不符合开闭原则，新增功能，需要修改已有的代码
 package main
 
 import "fmt"

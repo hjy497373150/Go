@@ -5,7 +5,7 @@ package main
 import (
 	"fmt"
 	"sync"
-	"sync/atomic"
+	// "sync/atomic"
 )
 
 /*
@@ -18,25 +18,30 @@ type singleton struct {
 
 var instance *singleton // 懒汉实现需要在使用到这个单例的时候才去创建它
 
+var once sync.Once //Once模块
+
 var lock sync.Mutex // 定义一个锁
 
 var initialized uint32 // 标记
 
 func GetInstance() *singleton {
-	// 标记位为1，说明单例已经被生成
-	if atomic.LoadUint32(&initialized) == 1 {
-		return instance
-	}
-	// 如果没有，就加锁申请
-	lock.Lock()
+	// // 标记位为1，说明单例已经被生成
+	// if atomic.LoadUint32(&initialized) == 1 {
+	// 	return instance
+	// }
+	// // 如果没有，就加锁申请
+	// lock.Lock()
 
-	defer lock.Unlock()
-	// 只有该方法首次被调用才会生成这个单例的对象
-	if instance == nil {
+	// defer lock.Unlock()
+	// // 只有该方法首次被调用才会生成这个单例的对象
+	// if instance == nil {
+	// 	instance = new(singleton)
+	// 	atomic.StoreUint32(&initialized, 1) // 设置标记位为1
+	// 	return instance
+	// }
+	once.Do(func ()  {
 		instance = new(singleton)
-		atomic.StoreUint32(&initialized, 1) // 设置标记位为1
-		return instance
-	}
+	})
 	return instance
 }
 

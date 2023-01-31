@@ -34,6 +34,15 @@ func (sb *SharesBanker) Dobusiness() {
 	fmt.Println("这里是股票业务")
 }
 
+// (+) 转账业务，新增一个类
+type TransferBanker struct {
+
+}
+
+func (tb *TransferBanker) Dobusiness() {
+	fmt.Println("这里是转账业务")
+}
+
 // 实现一个架构层，参数是interface
 func BankBusiness(banker AbstractBanker) {
 	banker.Dobusiness()
