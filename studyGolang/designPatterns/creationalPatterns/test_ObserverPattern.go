@@ -85,6 +85,7 @@ func (cm *ClassMonitor) Notify() {
 	}
 }
 
+//---------业务逻辑层----------
 func main() {
 	zhang3 := new(Zhang3)
 	zhang3.badthing = "抄作业"
