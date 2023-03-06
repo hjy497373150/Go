@@ -2,6 +2,7 @@ package main
 
 import "fmt"
 
+
 // 手撸双向链表 + 自带的map哈希
 type LRUCache struct {
     Capacity int //最大容量
