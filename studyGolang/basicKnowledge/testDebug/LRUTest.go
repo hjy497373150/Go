@@ -34,6 +34,7 @@ func Constructor(capacity int) LRUCache {
     }
     l.head.next = l.tail
     l.tail.pre = l.head
+	fmt.Println("LRU constructor success,capacity = ",capacity,"size = ",0)
     return l
 }
 
@@ -41,13 +42,14 @@ func Constructor(capacity int) LRUCache {
 func (this *LRUCache) Get(key int) int {
     // 如果key不在cache中，直接返回-1
     if _,ok := this.cache[key];!ok {
+		fmt.Println("LRU has not found key = ",key)
         return -1
     }
     // 否则需要更新该节点在链表中的位置,即放在队头
     node := this.cache[key]
     this.MoveToHead(node)
+	fmt.Println("[Get] key = ",key,"value = ",node.value)
     return node.value
-
 }
 
 
@@ -69,6 +71,7 @@ func (this *LRUCache) Put(key int, value int)  {
         node.value = value
         this.MoveToHead(node)
     }
+	fmt.Println("[Put] key = ",key,"value = ",value," success,now size = ",this.Size)
 }
 
 // 把节点移动到队头
@@ -113,6 +116,5 @@ func (this *LRUCache) RemoveTail(){
 func main() {
 	lrucache := Constructor(5)
     lrucache.Put(1,1)
-    param_1 := lrucache.Get(1)
-    fmt.Println("key = 1,value = ",param_1)
+    lrucache.Get(2)
 }
