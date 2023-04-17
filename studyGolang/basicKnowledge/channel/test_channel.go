@@ -6,7 +6,6 @@ import (
 func main() {
 	// 创建一个channel 无缓冲
 	c := make(chan int) 
-
 	go func() {
 		defer fmt.Printf("gorountine结束...\n")
 		fmt.Println("gorountine正在运行...")
