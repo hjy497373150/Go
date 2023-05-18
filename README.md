@@ -43,5 +43,7 @@ Go语言的设计模式
 ## GMP
 Go语言的GMP调度机制
 
+## go_concurrency
+深入理解go的并发编程，也是基于极客时间《Go并发编程实战课》的笔记和思考 https://time.geekbang.org/column/intro/100061801?tab=catalog
 ## IM_System
 即时语音聊天demo，包括server和client，可以实现公私聊等语音聊天的基本功能
