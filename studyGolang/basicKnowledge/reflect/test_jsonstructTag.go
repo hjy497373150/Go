@@ -1,15 +1,15 @@
 package main
 
 import (
-	"fmt"
 	"encoding/json"
+	"fmt"
 )
 
 type Movie struct {
-	Title string `json:"title"`
-	Year int `json:"year"`
-	Price int `json:"rmb"`
-	Actors []string	`json:"actors"`
+	Title  string   `json:"title"`
+	Year   int      `json:"year"`
+	Price  int      `json:"rmb"`
+	Actors []string `json:"actors"`
 }
 
 func main() {
