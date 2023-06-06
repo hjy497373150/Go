@@ -16,9 +16,7 @@ func (s *SearchService) Search(ctx context.Context, r *pb.SearchRequest) (*pb.Se
     return &pb.SearchResponse{Response: r.GetRequest() + " Server"}, nil
 }
 
-func (s *SearchService) mustEmbedUnimplementedSearchServiceServer() {
-
-}
+func (s *SearchService) mustEmbedUnimplementedSearchServiceServer() {}
 
 const PORT = "9001"
 

@@ -51,7 +51,7 @@ func (c *searchServiceClient) Search(ctx context.Context, in *SearchRequest, opt
 // for forward compatibility
 type SearchServiceServer interface {
 	Search(context.Context, *SearchRequest) (*SearchResponse, error)
-	mustEmbedUnimplementedSearchServiceServer()
+	// mustEmbedUnimplementedSearchServiceServer()
 }
 
 // UnimplementedSearchServiceServer must be embedded to have forward compatible implementations.

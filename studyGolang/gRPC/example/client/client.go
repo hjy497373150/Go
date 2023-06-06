@@ -20,7 +20,7 @@ func main() {
 
     client := pb.NewSearchServiceClient(conn)
     resp, err := client.Search(context.Background(), &pb.SearchRequest{
-        Request: "gRPC",
+        Request: "hello, I'm a gRPC",
     })
     if err != nil {
         log.Fatalf("client.Search err: %v", err)
