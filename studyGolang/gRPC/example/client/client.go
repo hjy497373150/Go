@@ -6,7 +6,7 @@ import (
 
     "google.golang.org/grpc"
 
-    pb "studyGolang/gRPC/example/proto"
+    pb "github.com/klayhu/studyGolang/studyGolang/gRPC/example/proto/search"
 )
 
 const PORT = "9001"

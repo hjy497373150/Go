@@ -7,13 +7,17 @@ import (
 
     "google.golang.org/grpc"
 
-    pb "github.com/hjy497373150/studyGolang/gRPC/example/proto/search"
+    pb "github.com/klayhu/studyGolang/studyGolang/gRPC/example/proto/search"
 )
 
 type SearchService struct{}
 
 func (s *SearchService) Search(ctx context.Context, r *pb.SearchRequest) (*pb.SearchResponse, error) {
     return &pb.SearchResponse{Response: r.GetRequest() + " Server"}, nil
+}
+
+func (s *SearchService) mustEmbedUnimplementedSearchServiceServer() {
+
 }
 
 const PORT = "9001"
