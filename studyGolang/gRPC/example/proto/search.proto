@@ -2,7 +2,7 @@ syntax = "proto3";
 
 package proto;
 
-option go_package = "github.com/hjy497373150/studyGolang/gRPC/example/proto";
+option go_package = "./search";
 
 service SearchService {
     rpc Search(SearchRequest) returns (SearchResponse) {}

@@ -7,7 +7,7 @@ import (
 
     "google.golang.org/grpc"
 
-    pb "github.com/hjy497373150/studyGolang/gRPC/example/proto"
+    pb "github.com/hjy497373150/studyGolang/gRPC/example/proto/search"
 )
 
 type SearchService struct{}
